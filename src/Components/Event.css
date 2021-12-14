@@ -3,7 +3,6 @@
   flex-direction: row;
   justify-content: space-between;
   width: 80%;
-  height: 13em;
   border: solid black 0.2em;
   background-color: burlywood;
   font-size: 0.8em;
@@ -12,6 +11,11 @@
 }
 
 .left {
+  margin: 0;
+  padding: 0;
+  width: 50%;
+}
+.right {
   margin: 0;
   padding: 0;
   width: 50%;
@@ -28,7 +32,16 @@
   margin-right: 5em;
 }
 
+.comments p {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+}
+
 .comments {
   display: flex;
   flex-direction: row;
+  background-color: rgb(255, 210, 143);
+  margin: 0.2em;
 }
