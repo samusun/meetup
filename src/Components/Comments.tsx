@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react'
+import React, { ReactElement, useState, useEffect } from 'react'
 
 interface Props {
     comments: { user: string, comment: string }[]
@@ -16,7 +16,7 @@ const [commentState, setCommentState] = useState<CommentArray[]>([])
 
 let localComments: any = localStorage.getItem(`${eventName}`)
 
-React.useEffect(() => {
+useEffect(() => {
     if(localComments){
     let oneArray: CommentArray[] = JSON.parse(localComments)
    setCommentState(oneArray)

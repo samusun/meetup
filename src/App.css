@@ -10,15 +10,27 @@
 }
 
 .container {
-  width: 80%;
+  width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 .Header {
   height: 8em;
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+}
+
+.createEventContainer {
+  display: flex;
+  justify-content: center;
+}
+.createEventForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: cadetblue;
 }
