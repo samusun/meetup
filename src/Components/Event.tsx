@@ -32,10 +32,8 @@ export default function Event({eventName, date, time, place, description,  parti
     return (
         <div className="event" >
             <div className="left">
-            <div className="eventHead">
                 <h1>{eventName}</h1>
                 <p>{date}, {time}</p>
-            </div>
             <h3>Attendees: {attend}/{participantsMax}, Place: {place}</h3>
             <p>{description}</p>
             {(attend === participants + 1) && <p><b>You are attending</b></p>}

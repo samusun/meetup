@@ -23,14 +23,20 @@
   justify-content: space-around;
 }
 
-.createEventContainer {
-  display: flex;
-  justify-content: center;
+.createContainer {
+  width: 40em;
+  height: 30em;
 }
+
 .createEventForm {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   background-color: cadetblue;
+  margin: 5em;
+}
+
+.createEventForm input {
+  margin: 0.4em;
 }

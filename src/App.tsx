@@ -6,7 +6,7 @@ import CreateEvent from './Views/CreateEvent';
 import image from "./assets/pics/meetup.png"
 
 function App() {
-    	const [view, setView] = useState<string>('start')
+    const [view, setView] = useState<string>('start')
 	const VIEW_UPCOMING = 'Upcoming', VIEW_PREVIOUS = 'Previous', VIEW_CREATE = 'Create'
 
 	let main = null;
@@ -31,9 +31,9 @@ function App() {
 					<button data-test="create-button"
 						onClick={() => setView(VIEW_CREATE)}> Create new event </button>
 				</nav>
-     <main>
-				{main}
-			</main>
+        <main>
+			{main}
+		</main>
     </div>
   );
 }

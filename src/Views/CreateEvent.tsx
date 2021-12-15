@@ -10,7 +10,7 @@ export default function CreateEvent(): ReactElement {
     const [description, setDescription] = useState<string>()
     let localEvents: any = localStorage.getItem("Events")
 
-    let eventObject: { eventName: string | undefined; date: any; time: any; where: string | undefined; participants: number; participantsMax: number; description: string | undefined; comments: string[] };
+    let eventObject: { eventName: string | undefined; date: any; time: any; place: string | undefined; participants: number; participantsMax: number; description: string | undefined; comments: string[] };
 
     useEffect(() => {
     if(!localEvents.isArray){
@@ -24,24 +24,23 @@ export default function CreateEvent(): ReactElement {
             eventName: name,
             date: date,
             time: time,
-            where: where,
+            place: where,
             participants: 0,
             participantsMax: parseInt(max),
             description: description,
             comments: []
         } 
+        console.log(eventObject)
         let my = JSON.parse(localEvents)
         console.log(my)
-        let newEvents: any = my.unshift(eventObject)
-          setTimeout(() => {
-        console.log(JSON.stringify(newEvents))
-        localStorage.setItem("Events", JSON.stringify(newEvents))
+        my.unshift(eventObject)
+        console.log(my)
+        localStorage.setItem("Events", JSON.stringify(my))
         console.log(localStorage.getItem("Events"))
-          }, 2000);
     }
 
     return (
-        <div className="createEventContainer">
+        <div className="createContainer">
            <form className="createEventForm"  action="">
                <input type="text" placeholder='Name of event' onChange={event => setName(event.target.value)} />
                <div>
