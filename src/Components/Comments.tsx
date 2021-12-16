@@ -36,7 +36,7 @@ useEffect(() => {
     }
 
     return (
-        <div>
+        <div className="commentContainer" >
             <input type="text" placeholder='Name' onChange={(e) => setName(e.target.value)}/>
             <input type="text" placeholder='Comment'onChange={(e) => setComment(e.target.value)} />
             <button id="sendBtn" onClick={saveComment} >Send</button>

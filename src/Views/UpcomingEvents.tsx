@@ -11,21 +11,25 @@ const [onlyNewEvents, setOnlyNewEvents] = useState([])
 
   function removeOldEvents(events: any, localEvents: any, todaysDate: any) {
       let newArray: any = []
-      const mergedList = events.concat(localEvents)
-      console.log(mergedList, mergedList.length)
+      let mergedList: any = []
+      localEvents ? mergedList = events.concat(localEvents) : mergedList = events
         for(let i = 0; i< mergedList.length; i++){
         if(mergedList[i].date > todaysDate){
             mergedList[i].previous = false;
             newArray.push(mergedList[i])
         } else {
-            console.log("item date: ", mergedList[i].date, "Todays date: ", todaysDate)
+            console.log("item date: ", mergedList[i].date, "Event name: ", mergedList[i])
         }
     }
+    sortByDate(newArray)
     setOnlyNewEvents(newArray)
   }
 
+  function sortByDate(input: any){
+input.sort((a: any, b: any) => (a.date < b.date ? -1 : 1));
+  }
+
   useEffect(() => {
-      console.log("UseEffect is running: ", localEvents, typeof localEvents)
       let parsed = JSON.parse(localEvents)
     removeOldEvents(eventData, parsed, dateInOrder)
   }, [])
