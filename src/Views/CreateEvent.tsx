@@ -8,12 +8,20 @@ export default function CreateEvent(): ReactElement {
     const [where, setWhere] = useState<string>()
     const [max, setMax] = useState<any>()
     const [description, setDescription] = useState<string>()
+
     let localEvents: any = localStorage.getItem("Events")
+    console.log(localEvents)
 
     let eventObject: { eventName: string | undefined; date: any; time: any; place: string | undefined; participants: number; participantsMax: number; description: string | undefined; comments: string[] };
 
+    function dateToNumber(date: any){
+    let newDate = date.replaceAll('-', '')
+    newDate = parseInt(newDate);
+    return newDate
+}
+
     useEffect(() => {
-    if(!localEvents.isArray){
+    if(!localEvents){
         localStorage.setItem("Events", "[]")
     }
   }, [])
@@ -22,7 +30,7 @@ export default function CreateEvent(): ReactElement {
         event.preventDefault(); 
         eventObject = {
             eventName: name,
-            date: date,
+            date: dateToNumber(date),
             time: time,
             place: where,
             participants: 0,
@@ -53,7 +61,7 @@ export default function CreateEvent(): ReactElement {
                </div>
                <textarea onChange={event => setDescription(event.target.value)} name="description" rows={5}
           cols={50}placeholder='Description'></textarea>
-          <button onClick={submitEvent} >Submit</button>
+          <button onClick={submitEvent} >Submit new Event</button>
            </form>
         </div>
     )

@@ -1,0 +1,117 @@
+.App {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
+  background: rgb(63, 94, 251);
+  background: radial-gradient(
+    circle,
+    rgb(179, 191, 255) 0%,
+    rgba(252, 70, 107, 1) 100%
+  );
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.Header {
+  height: 8em;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3em;
+  margin-top: 2em;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  height: 10em;
+  justify-content: space-around;
+}
+
+$color: rgb(0, 34, 184);
+
+button {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  border-radius: 10rem;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0.15rem;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $color;
+    border-radius: 10rem;
+    z-index: -2;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: darken($color, 15%);
+    transition: all 0.3s;
+    border-radius: 10rem;
+    z-index: -1;
+  }
+  &:hover {
+    color: #fff;
+    &:before {
+      width: 100%;
+    }
+  }
+}
+
+#sendBtn {
+  display: inline-block;
+  padding: 0.25rem 0.7rem;
+  font-size: 1rem;
+  &:after {
+    background-color: green;
+  }
+}
+
+.createContainer {
+  width: 40em;
+  height: 30em;
+}
+
+.createEventForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  border-radius: 1em;
+  margin: 3em;
+  padding: 2em;
+}
+
+.createEventForm input {
+  margin: 0.4em;
+}
+.createEventForm textarea {
+  margin: 0.4em;
+  margin-bottom: 2em;
+}

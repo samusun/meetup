@@ -39,7 +39,7 @@ useEffect(() => {
         <div>
             <input type="text" placeholder='Name' onChange={(e) => setName(e.target.value)}/>
             <input type="text" placeholder='Comment'onChange={(e) => setComment(e.target.value)} />
-            <button onClick={saveComment} >Send</button>
+            <button id="sendBtn" onClick={saveComment} >Send</button>
             {commentState && commentState.map((data, index) => (
                 <div key={index} className="comments">
                 <p><b>{data.name}:</b> &nbsp;</p>

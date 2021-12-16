@@ -1,20 +1,11 @@
 import React, { ReactElement, useState, useEffect } from 'react'
 import Rate from "./Rate"
 import Comments from "./Comments"
-import "./Event.css"
+import "./Event.scss"
+import { Props } from "../interface/interface"
 
-interface Props {
-    eventName: string
-    date: string
-    time: string
-    place: string
-    description: string
-    participants: number
-    participantsMax: number
-    comments: { user: string, comment: string }[]
-}
 
-export default function Event({eventName, date, time, place, description,  participants, participantsMax, comments}: Props): ReactElement {
+export default function Event({eventName, date, time, place, description, participants, participantsMax, previous, comments}: Props): ReactElement {
     
     const [showComments, setShowComments] = useState(false)
     const [attend, setAttend] = useState(participants)
@@ -37,8 +28,8 @@ export default function Event({eventName, date, time, place, description,  parti
             <h3>Attendees: {attend}/{participantsMax}, Place: {place}</h3>
             <p>{description}</p>
             {(attend === participants + 1) && <p><b>You are attending</b></p>}
-            <button onClick={() => setAttending()} >{attendBtn}</button>
-            <button onClick={() => setShowComments(!showComments)}>Comment</button>
+            <button className="button" disabled={previous} onClick={() => setAttending()} >{attendBtn}</button>
+            <button className="button" onClick={() => setShowComments(!showComments)}>Comment</button>
             </div>
             <div className="right" >
             {showComments && <Comments eventName={eventName} comments={comments} /> }
