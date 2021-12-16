@@ -7,7 +7,7 @@ import image from "./assets/pics/meetup.png"
 
 function App() {
     const [view, setView] = useState<string>()
-	const VIEW_UPCOMING = 'Upcoming', VIEW_PREVIOUS = 'Previous', VIEW_CREATE = 'Create'
+	const VIEW_UPCOMING = 'Upcoming events', VIEW_PREVIOUS = 'Previous events', VIEW_CREATE = 'Create event'
 
 	let main = null;
 
@@ -24,10 +24,8 @@ function App() {
   return (
     <div className="App">
       <nav className="Header">
-					
                         <img src={image} alt="" data-test="upcoming-btn"
 						onClick={() => setView(VIEW_UPCOMING)} />
-
                         <div className="navbar" >
                         <button
 						onClick={() => setView(VIEW_PREVIOUS)}
@@ -39,8 +37,9 @@ function App() {
 						onClick={() => setView(VIEW_CREATE)}> Create new event </button>
                         </div>
 				</nav>
+                <h2 className="mainHeader" >{view}</h2>
         <main>
-			{main}
+            {main}
 		</main>
     </div>
   );
