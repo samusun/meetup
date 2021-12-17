@@ -47,7 +47,7 @@ function verifyInput (data: any) {
             participants: 0,
             participantsMax: parseInt(max),
             description: description,
-            rating: [3],
+            rating: [],
             comments: []
         } 
         let my = JSON.parse(localEvents)

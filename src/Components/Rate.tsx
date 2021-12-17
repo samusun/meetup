@@ -73,7 +73,7 @@ export default function Rate({eventName}: Props): ReactElement {
         let divider = 0
         for( let i = 0; i<ratingArray.length; i++){
             total += ratingArray[i]
-            divider = i
+            divider = i+1
         } 
         setAverage(Math.round(total/divider * 10) / 10)
     }
