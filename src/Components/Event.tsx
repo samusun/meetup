@@ -30,6 +30,7 @@ export default function Event({eventName, date, time, place, description, partic
             {(attend === participants + 1) && <p><b>You are attending</b></p>}
             <button className="button" disabled={previous} onClick={() => setAttending()} >{attendBtn}</button>
             <button className="button" onClick={() => setShowComments(!showComments)}>Comment</button>
+            <Rate eventName={eventName}/>
             </div>
             <div className="right" >
             {showComments && <Comments eventName={eventName} comments={comments} /> }

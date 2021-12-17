@@ -17,8 +17,6 @@ const [onlyNewEvents, setOnlyNewEvents] = useState([])
         if(mergedList[i].date > todaysDate){
             mergedList[i].previous = false;
             newArray.push(mergedList[i])
-        } else {
-            console.log("item date: ", mergedList[i].date, "Event name: ", mergedList[i])
         }
     }
     sortByDate(newArray)
@@ -34,15 +32,10 @@ input.sort((a: any, b: any) => (a.date < b.date ? -1 : 1));
     removeOldEvents(eventData, parsed, dateInOrder)
   }, [])
 
-console.log(onlyNewEvents)
-
-
-
-    // NEED TO WRITE FILTER FUNCTION TO SORT DATE 
     return (
         <div className="container" >
-            {onlyNewEvents && onlyNewEvents.map((data: any) => (
-          <Event eventName = {data.eventName} date= { data.date} time = {data.time} place = {data.place} description = {data.description} participants = { data.participants} participantsMax = {data.participantsMax} previous={data.previous} comments = {data.comments} />
+            {onlyNewEvents && onlyNewEvents.map((data: any, index) => (
+          <Event key={index} eventName = {data.eventName} date= { data.date} time = {data.time} place = {data.place} description = {data.description} participants = { data.participants} participantsMax = {data.participantsMax} previous={data.previous} rating={data.rating} comments = {data.comments} />
             ))}
     </div>
     )

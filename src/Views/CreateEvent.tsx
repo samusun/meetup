@@ -11,9 +11,8 @@ export default function CreateEvent(): ReactElement {
     const [submitResponse, setSubmitResponse] = useState<string>()
 
     let localEvents: any = localStorage.getItem("Events")
-    console.log(localEvents)
 
-    let eventObject: { eventName: string | undefined; date: any; time: any; place: string | undefined; participants: number; participantsMax: number; description: string | undefined; comments: string[] };
+    let eventObject: { eventName: string | undefined; date: any; time: any; place: string | undefined; participants: number; participantsMax: number; description: string | undefined; rating: any; comments: string[] };
 
     function dateToNumber(date: any){
     let newDate = date.replaceAll('-', '')
@@ -34,7 +33,6 @@ function verifyInput (data: any) {
             setSubmitResponse("Your description of the event need to be a bit longer")
             return false
         }
-        console.log("Verification completed")
         setSubmitResponse("Nice! Your event is successfully submitted")
         return eventObject
   }
@@ -49,15 +47,13 @@ function verifyInput (data: any) {
             participants: 0,
             participantsMax: parseInt(max),
             description: description,
+            rating: [3],
             comments: []
         } 
-        console.log(eventObject)
         let my = JSON.parse(localEvents)
-        console.log(my)
         my.unshift(eventObject)
-        console.log(my)
         localStorage.setItem("Events", JSON.stringify(my))
-        console.log(localStorage.getItem("Events"))
+        setSubmitResponse("Nice! Your event is successfully submitted")
     }
 
     useEffect(() => {

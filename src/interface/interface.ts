@@ -6,6 +6,7 @@ export interface Props {
   description: string;
   participants: number;
   participantsMax: number;
+  rating: number[];
   previous: boolean;
   comments: { user: string; comment: string }[];
 }

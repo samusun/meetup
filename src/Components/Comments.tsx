@@ -28,9 +28,7 @@ useEffect(() => {
     function saveComment() {
         localComments = localStorage.getItem(`${eventName}`)
         let newArray: CommentArray[] = JSON.parse(localComments)
-        console.log(localComments)
         newArray.unshift({name: name, comment: comment})
-        console.log(newArray)
         setCommentState(newArray)
         localStorage.setItem(`${eventName}`,JSON.stringify(newArray) )
     }

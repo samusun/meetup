@@ -8,6 +8,7 @@ export const eventData = [
     participants: 10,
     participantsMax: 20,
     previous: true,
+    rating: [1, 5, 2],
     comments: []
   },
 
@@ -20,6 +21,7 @@ export const eventData = [
     participants: 0,
     participantsMax: 10,
     previous: true,
+    rating: [1, 5, 2],
     comments: [
       { user: 'Ricky', comment: 'Very fun' },
       { user: 'MyMan', comment: 'I love this' }
@@ -35,6 +37,7 @@ export const eventData = [
     participants: 5,
     participantsMax: 30,
     previous: false,
+    rating: [1, 5, 2],
     comments: [
       { user: 'Ricky', comment: 'Very fun' },
       { user: 'MyMan', comment: 'I love this' }
@@ -50,6 +53,7 @@ export const eventData = [
     participants: 5,
     participantsMax: 30,
     previous: true,
+    rating: [1, 5, 2],
     comments: [
       { user: 'Ricky', comment: 'Very fun' },
       { user: 'MyMan', comment: 'I love this' }

@@ -1,9 +1,10 @@
 .rating {
   display: inline-block;
   position: relative;
-  height: 50px;
-  line-height: 50px;
-  font-size: 50px;
+  height: 25px;
+  line-height: 25px;
+  font-size: 25px;
+  margin-right: 0.2em;
 }
 
 .rating label {
@@ -62,4 +63,10 @@
 .rating label input:focus:not(:checked) ~ .icon:last-child {
   color: #000;
   text-shadow: 0 0 5px #09f;
+}
+
+.ratingBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
