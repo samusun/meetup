@@ -27,13 +27,13 @@ export default function Event({eventName, date, time, place, description, partic
                 <p>{date}, {time}</p>
             <h3>Attendees: {attend}/{participantsMax}, Place: {place}</h3>
             <p>{description}</p>
-            {(attend === participants + 1) && <p><b>You are attending</b></p>}
-            <button className="button" disabled={previous} onClick={() => setAttending()} >{attendBtn}</button>
-            <button className="button" onClick={() => setShowComments(!showComments)}>Comment</button>
+            {(attend === participants + 1) && <p data-testid="attendResponse" ><b>You are attending</b></p>}
+            <button data-testid="attend" className="button" disabled={previous} onClick={() => setAttending()} >{attendBtn}</button>
+            <button data-testid="comment" className="button" onClick={() => setShowComments(!showComments)}>Comment</button>
             <Rate eventName={eventName}/>
             </div>
             <div className="right" >
-            {showComments && <Comments eventName={eventName} comments={comments} /> }
+            {showComments && <Comments  eventName={eventName} comments={comments} /> }
             </div>
         </div>
     )

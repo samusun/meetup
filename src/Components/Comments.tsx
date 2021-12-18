@@ -34,9 +34,9 @@ useEffect(() => {
     }
 
     return (
-        <div className="commentContainer" >
-            <input type="text" placeholder='Name' onChange={(e) => setName(e.target.value)}/>
-            <input type="text" placeholder='Comment'onChange={(e) => setComment(e.target.value)} />
+        <div data-testid="commentSection" className="commentContainer" >
+            <input type="text" placeholder='Name' data-testid="nameInput" onChange={(e) => setName(e.target.value)}/>
+            <input type="text" placeholder='Comment' data-testid="commentInput" onChange={(e) => setComment(e.target.value)} />
             <button id="sendBtn" onClick={saveComment} >Send</button>
             {commentState && commentState.map((data, index) => (
                 <div key={index} className="comments">
