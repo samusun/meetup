@@ -15,14 +15,16 @@ describe("Upcoming Events component", () => {
         const button = screen.getByRole('button', {name: /attend/i})
         expect(button).toBeInTheDocument();
     })
+
     it("Attending response shows only when Attend button is clicked", () => {
         const wrapper = render(<UpcomingEvents/>)
         const response = wrapper.queryByTestId("attendResponse")
         expect(response).not.toBeInTheDocument();
-        fireEvent.click(screen.getByTestId(/attend/i))
+        fireEvent.click(screen.getByTestId("attend"))
         const response2 = wrapper.queryByTestId("attendResponse")
         expect(response2).toBeInTheDocument();
     })
+
     it("Attending response disapear again after click 2", () => {
         const wrapper = render(<UpcomingEvents/>)
         const response = wrapper.queryByTestId("attendResponse")
@@ -33,6 +35,16 @@ describe("Upcoming Events component", () => {
         const response2 = wrapper.queryByTestId("attendResponse")
         expect(response2).not.toBeInTheDocument();
     })
+
+
+    it("Shows date, time, location and description about the event", () => {
+        const wrapper = render(<UpcomingEvents/>)
+        expect(wrapper.queryByTestId("date")).toBeInTheDocument();
+        expect(wrapper.queryByTestId("time")).toBeInTheDocument();
+        expect(wrapper.queryByTestId("location")).toBeInTheDocument();
+        expect(wrapper.queryByTestId("description")).toBeInTheDocument();
+    })
+
 
     it("Does not show comment section at start", () => {
         const wrapper = render(<UpcomingEvents/>)
