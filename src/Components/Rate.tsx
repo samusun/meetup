@@ -88,7 +88,7 @@ export default function Rate({eventName}: Props): ReactElement {
     <form className="rating">
   <label>
     <input type="radio" name="stars" value="1" onClick={event => sendRating(event.target)} />
-    <span className="icon">★</span>
+    <span  data-testid="rate3" className="icon">★</span>
   </label>
   <label>
     <input type="radio" name="stars" value="2" onClick={event => sendRating(event.target)} />
@@ -99,7 +99,7 @@ export default function Rate({eventName}: Props): ReactElement {
     <input type="radio" name="stars" value="3" onClick={event => sendRating(event.target)} />
     <span className="icon">★</span>
     <span className="icon">★</span>
-    <span className="icon">★</span>   
+    <span  className="icon">★</span>   
   </label>
   <label>
     <input type="radio" name="stars" value="4" onClick={event => sendRating(event.target)} />
@@ -117,9 +117,9 @@ export default function Rate({eventName}: Props): ReactElement {
     <span className="icon">★</span>
   </label>
 </form>
-<h4>avg: {average}</h4>
+ {average && <div data-testid="average" >avg: {average}</div> }
 </div>
-<p className="ratingResponse" >{ratingResponse}</p>
+ {average && <p data-testid="ratingResponse" className="ratingResponse" >{ratingResponse}</p> }
 </>
     )
 }

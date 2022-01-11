@@ -14,6 +14,7 @@ describe("Main component", () => {
         const button = screen.getAllByRole('button', {name: /attend/i})
         expect(button.length).toBeGreaterThan(2)
     })
+
     // it("Disabled attend button", () => {
     //     const wrapper = shallow(<PreviousEvents/>)
     //     const button = screen.getAllByRole('button', {name: /attend/i})

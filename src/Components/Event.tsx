@@ -1,4 +1,4 @@
-import React, { ReactElement, useState, useEffect } from 'react'
+import React, { ReactElement, useState } from 'react'
 import Rate from "./Rate"
 import Comments from "./Comments"
 import "./Event.scss"

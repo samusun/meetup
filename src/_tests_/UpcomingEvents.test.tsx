@@ -71,3 +71,16 @@ describe("Upcoming Events component", () => {
         expect(wrapper.queryByText(/Jannemannen/)).toBeInTheDocument();
     })
 })
+
+
+// RATE TEST -> 
+// it("Does not show rating and average before rated, and shows after rating is given", () => {
+//         const wrapper = render(<Rate eventName="test" />)
+//         expect(wrapper.queryByTestId("ratingResponse")).not.toBeInTheDocument();
+//         expect(wrapper.queryByTestId("average")).not.toBeInTheDocument();
+
+//         fireEvent.click(wrapper.getByTestId("rate3"))
+
+//         expect(wrapper.queryByTestId("ratingResponse")).toBeInTheDocument();
+//         expect(wrapper.queryByTestId("average")).toBeInTheDocument();
+//     })
