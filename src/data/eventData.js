@@ -9,7 +9,8 @@ export const eventData = [
     participantsMax: 20,
     previous: true,
     rating: [1, 5, 2],
-    comments: []
+    comments: [],
+    searchWords: 'Fun'
   },
 
   {
@@ -25,7 +26,8 @@ export const eventData = [
     comments: [
       { user: 'Ricky', comment: 'Very fun' },
       { user: 'MyMan', comment: 'I love this' }
-    ]
+    ],
+    searchWords: 'Laugh'
   },
 
   {
@@ -41,7 +43,8 @@ export const eventData = [
     comments: [
       { user: 'Ricky', comment: 'Very fun' },
       { user: 'MyMan', comment: 'I love this' }
-    ]
+    ],
+    searchWords: 'jokes'
   },
 
   {
@@ -57,6 +60,7 @@ export const eventData = [
     comments: [
       { user: 'Ricky', comment: 'Very fun' },
       { user: 'MyMan', comment: 'I love this' }
-    ]
+    ],
+    searchWords: 'Sailing'
   }
 ];
