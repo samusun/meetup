@@ -11,3 +11,5 @@ Som användare vill jag kunna betygsätta evenemang som varit.
 Som användare vill jag kunna diskutera kommande och tidigare evenemang.
 
 Som användare vill jag kunna skapa ett evenemang, där jag kan fylla i tid, plats och annan viktig information.
+
+Som användare vill jag kunna söka efter evenemang baserat på sökord i eventet.
