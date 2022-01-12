@@ -19,4 +19,4 @@ Som användare vill jag kunna söka efter evenemang baserat på sökord i evente
 # Use Case Diagram
 ![UseCaseDiagram](https://user-images.githubusercontent.com/60462864/149145647-2b20fb24-8eed-44ce-a35f-94c6fbca0737.png)
 
-### [Kolla in projektet här](meetup2022.herokuapp.com/)
+### [Kolla in projektet här](http://meetup2022.herokuapp.com/)
