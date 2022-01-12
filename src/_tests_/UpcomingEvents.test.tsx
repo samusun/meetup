@@ -1,7 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { shallow, mount } from 'enzyme';
 import UpcomingEvents from './../Views/UpcomingEvents';
-import Comments from './../Components/Comments';
 
 describe('Upcoming Events component', () => {
   it('Render without error', () => {
@@ -68,16 +67,15 @@ describe('Upcoming Events component', () => {
     fireEvent.click(wrapper.getByText('Send'));
     expect(wrapper.queryByText(/Jannemannen/)).toBeInTheDocument();
   });
+
+  it('Does not show rating and average before rated, and shows after rating is given', () => {
+    const wrapper = render(<UpcomingEvents />);
+    expect(wrapper.queryByTestId('ratingResponse')).not.toBeInTheDocument();
+    expect(wrapper.queryByTestId('average')).not.toBeInTheDocument();
+
+    fireEvent.click(wrapper.getByTestId('rate3'));
+
+    expect(wrapper.queryByTestId('ratingResponse')).toBeInTheDocument();
+    expect(wrapper.queryByTestId('average')).toBeInTheDocument();
+  });
 });
-
-// RATE TEST ->
-// it("Does not show rating and average before rated, and shows after rating is given", () => {
-//         const wrapper = render(<Rate eventName="test" />)
-//         expect(wrapper.queryByTestId("ratingResponse")).not.toBeInTheDocument();
-//         expect(wrapper.queryByTestId("average")).not.toBeInTheDocument();
-
-//         fireEvent.click(wrapper.getByTestId("rate3"))
-
-//         expect(wrapper.queryByTestId("ratingResponse")).toBeInTheDocument();
-//         expect(wrapper.queryByTestId("average")).toBeInTheDocument();
-//     })

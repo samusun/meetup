@@ -9,46 +9,44 @@ describe('Main component', () => {
   it('Render mount without error', () => {
     mount(<PreviousEvents />);
   });
-  it('Renders a few events in UpcomingEvents view', () => {
+
+  it('Renders a few previous events based on numbers of comments buttons', () => {
     render(<PreviousEvents />);
-    const button = screen.getAllByRole('button', { name: /attend/i });
+    const button = screen.getAllByRole('button', { name: /comment/i });
     expect(button.length).toBeGreaterThan(2);
   });
 
-  // it("Disabled attend button", () => {
-  //     const wrapper = shallow(<PreviousEvents/>)
-  //     const button = screen.getAllByRole('button', {name: /attend/i})
-  //     console.log(button[0])
-  //     wrapper.unmount();
-  // })
+  it('Shows date, time, location and description about the event', () => {
+    const wrapper = render(<PreviousEvents />);
+    expect(wrapper.queryAllByTestId('date')[0]).toBeInTheDocument();
+    expect(wrapper.queryAllByTestId('time')[0]).toBeInTheDocument();
+    expect(wrapper.queryAllByTestId('location')[0]).toBeInTheDocument();
+    expect(wrapper.queryAllByTestId('description')[0]).toBeInTheDocument();
+  });
 
-  // it("EventComponent don't show extra information before click", () => {
-  //     render(<PreviousEvents/>)
-  //     expect(screen.queryByText(/extra information/i)).toBe(null);
-  // })
+  it('Does not show comment section at start', () => {
+    const wrapper = render(<PreviousEvents />);
+    const response = wrapper.queryByTestId('commentSection');
+    expect(response).not.toBeInTheDocument();
+  });
 
-  // it("EventComponent expands and shows more details at click", () => {
-  //     render(<PreviousEvents/>)
-  //     const element = component.find('input[type="password"]')
-  //     fireEvent.click(element)
-  //     expect(screen.getByText(/extra information/i)).toBeInTheDocument();
-  // })
-  // it("EventComponent expands and display rate button", () => {
-  //     render(<PreviousEvents/>)
-  //     const element = component.find('[data-test="radio1"]')
-  //     expect(element).toBeInTheDocument();
-  // })
-  // it("EventComponent expands and display comment button", () => {
-  //     render(<PreviousEvents/>)
-  //     const element = component.find('[data-test="radio1"]')
-  //     expect(element).toBeInTheDocument();
-  // })
-  // it("Comment section appear when comment btn clicked", () => {
-  //     render(<PreviousEvents/>)
-  //     const commentSection = component.queryByText('leave comment')
-  //     expect(commentSection).toBe(null)
-  //     const btn = component.find('[data-test="commentBtn"]')
-  //     fireEvent.click(btn)
-  //     expect(commentSection).toBeInTheDocument();
-  // })
+  it('Does show comment section after click on comment button', () => {
+    const wrapper = render(<PreviousEvents />);
+    const response = wrapper.queryByTestId('commentSection');
+    expect(response).not.toBeInTheDocument();
+    fireEvent.click(screen.getAllByText(/comment/i)[0]);
+    const response2 = wrapper.queryByTestId('commentSection');
+    expect(response2).toBeInTheDocument();
+  });
+
+  it('Renders a new message in comments when input is given', () => {
+    const wrapper = render(<PreviousEvents />);
+    fireEvent.click(wrapper.getAllByText(/comment/i)[0]);
+    const inputName: any = wrapper.getByTestId(/nameInput/i);
+    const inputComment: any = wrapper.getByTestId(/commentInput/i);
+    fireEvent.change(inputName, { target: { value: 'Kenneth' } });
+    fireEvent.change(inputComment, { target: { value: 'I WAS THERE' } });
+    fireEvent.click(wrapper.getByText('Send'));
+    expect(wrapper.queryByText(/Kenneth/)).toBeInTheDocument();
+  });
 });
