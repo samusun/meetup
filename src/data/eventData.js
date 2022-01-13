@@ -62,5 +62,39 @@ export const eventData = [
       { user: 'MyMan', comment: 'I love this' }
     ],
     searchWords: 'Sailing'
+  },
+
+  {
+    eventName: 'Expoloring the future',
+    date: 20221210,
+    time: '16.00',
+    place: 'Majorna',
+    description: 'Lets meet in the future',
+    participants: 5,
+    participantsMax: 30,
+    previous: false,
+    rating: [1, 5, 2],
+    comments: [
+      { user: 'Ricky', comment: 'Very fun' },
+      { user: 'MyMan', comment: 'I love this' }
+    ],
+    searchWords: 'future'
+  },
+
+  {
+    eventName: 'Expoloring',
+    date: 20221210,
+    time: '16.00',
+    place: 'Majorna',
+    description: 'Random exploring',
+    participants: 10,
+    participantsMax: 12,
+    previous: false,
+    rating: [1, 5, 2],
+    comments: [
+      { user: 'Ricky', comment: 'Very fun' },
+      { user: 'MyMan', comment: 'I love this' }
+    ],
+    searchWords: 'exploring'
   }
 ];

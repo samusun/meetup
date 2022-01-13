@@ -11,7 +11,7 @@ describe('Upcoming Events component', () => {
   });
   it('Renders a Attend event button', () => {
     render(<UpcomingEvents />);
-    const button = screen.getByRole('button', { name: /attend/i });
+    const button = screen.getAllByRole('button', { name: /attend/i })[0];
     expect(button).toBeInTheDocument();
   });
 
@@ -19,7 +19,7 @@ describe('Upcoming Events component', () => {
     const wrapper = render(<UpcomingEvents />);
     const response = wrapper.queryByTestId('attendResponse');
     expect(response).not.toBeInTheDocument();
-    fireEvent.click(screen.getByTestId('attend'));
+    fireEvent.click(screen.getAllByTestId('attend')[0]);
     const response2 = wrapper.queryByTestId('attendResponse');
     expect(response2).toBeInTheDocument();
   });
@@ -28,7 +28,7 @@ describe('Upcoming Events component', () => {
     const wrapper = render(<UpcomingEvents />);
     const response = wrapper.queryByTestId('attendResponse');
     expect(response).not.toBeInTheDocument();
-    const btn = screen.getByTestId(/attend/i);
+    const btn = screen.getAllByTestId(/attend/i)[0];
     fireEvent.click(btn);
     fireEvent.click(btn);
     const response2 = wrapper.queryByTestId('attendResponse');
@@ -37,10 +37,10 @@ describe('Upcoming Events component', () => {
 
   it('Shows date, time, location and description about the event', () => {
     const wrapper = render(<UpcomingEvents />);
-    expect(wrapper.queryByTestId('date')).toBeInTheDocument();
-    expect(wrapper.queryByTestId('time')).toBeInTheDocument();
-    expect(wrapper.queryByTestId('location')).toBeInTheDocument();
-    expect(wrapper.queryByTestId('description')).toBeInTheDocument();
+    expect(wrapper.queryAllByTestId('date')[0]).toBeInTheDocument();
+    expect(wrapper.queryAllByTestId('time')[0]).toBeInTheDocument();
+    expect(wrapper.queryAllByTestId('location')[0]).toBeInTheDocument();
+    expect(wrapper.queryAllByTestId('description')[0]).toBeInTheDocument();
   });
 
   it('Does not show comment section at start', () => {
@@ -52,20 +52,29 @@ describe('Upcoming Events component', () => {
     const wrapper = render(<UpcomingEvents />);
     const response = wrapper.queryByTestId('commentSection');
     expect(response).not.toBeInTheDocument();
-    fireEvent.click(screen.getByText(/comment/i));
+    fireEvent.click(screen.getAllByText(/comment/i)[0]);
     const response2 = wrapper.queryByTestId('commentSection');
     expect(response2).toBeInTheDocument();
   });
 
   it('Renders a new message in comments when input is given', () => {
     const wrapper = render(<UpcomingEvents />);
-    fireEvent.click(wrapper.getByText(/comment/i));
+    fireEvent.click(wrapper.getAllByText(/comment/i)[0]);
     const inputName: any = wrapper.getByTestId(/nameInput/i);
     const inputComment: any = wrapper.getByTestId(/commentInput/i);
-    fireEvent.change(inputName, { target: { value: 'Jannemannen' } });
+    fireEvent.change(inputName, { target: { value: 'Kenneth' } });
     fireEvent.change(inputComment, { target: { value: 'I WAS THERE' } });
     fireEvent.click(wrapper.getByText('Send'));
-    expect(wrapper.queryByText(/Jannemannen/)).toBeInTheDocument();
+    expect(wrapper.queryByText(/Kenneth/)).toBeInTheDocument();
+  });
+
+  it('allows me to give rating to an event', () => {
+    const wrapper = render(<UpcomingEvents />);
+    expect(
+      wrapper.queryByText(/thank you for rating/i)
+    ).not.toBeInTheDocument();
+    fireEvent.click(wrapper.getAllByTestId('rate3')[0]);
+    expect(wrapper.queryByText(/thank you for rating/i)).toBeInTheDocument();
   });
 
   it('Does not show rating and average before rated, and shows after rating is given', () => {
@@ -73,9 +82,22 @@ describe('Upcoming Events component', () => {
     expect(wrapper.queryByTestId('ratingResponse')).not.toBeInTheDocument();
     expect(wrapper.queryByTestId('average')).not.toBeInTheDocument();
 
-    fireEvent.click(wrapper.getByTestId('rate3'));
+    fireEvent.click(wrapper.getAllByTestId('rate3')[0]);
 
     expect(wrapper.queryByTestId('ratingResponse')).toBeInTheDocument();
     expect(wrapper.queryByTestId('average')).toBeInTheDocument();
+  });
+
+  it('Filter events by search string', () => {
+    const wrapper = render(<UpcomingEvents />);
+    const searchBar = wrapper.getByTestId('searchBar');
+    const submit = wrapper.getByTestId('submitSearch');
+    expect(wrapper.queryAllByTestId('eventHead').length).toBeGreaterThan(1);
+    fireEvent.change(searchBar, { target: { value: 'future' } });
+    fireEvent.click(submit);
+    expect(wrapper.queryAllByTestId('eventHead').length).toBe(1);
+    expect(wrapper.queryAllByTestId('eventHead')[0]).toHaveTextContent(
+      /future/i
+    );
   });
 });

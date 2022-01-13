@@ -49,9 +49,15 @@ export default function UpcomingEvents(): ReactElement {
         <input
           type='text'
           placeholder='Search'
+          data-testid='searchBar'
           onChange={(event) => setSearch(event.target.value)}
         />
-        <button onClick={(event) => filterEvents(event)}>Search</button>
+        <button
+          data-testid='submitSearch'
+          onClick={(event) => filterEvents(event)}
+        >
+          Search
+        </button>
       </form>
       {onlyNewEvents &&
         onlyNewEvents.map((data: any, index: React.Key | null | undefined) => (

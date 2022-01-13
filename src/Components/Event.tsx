@@ -32,7 +32,7 @@ export default function Event({
   return (
     <div className='event'>
       <div className='left'>
-        <h1>{eventName}</h1>
+        <h1 data-testid='eventHead'>{eventName}</h1>
         <div style={{ display: 'flex', flexDirection: 'row' }}>
           <p data-testid='date'>{date} &nbsp; </p>{' '}
           <p data-testid='time'> {time}</p>
