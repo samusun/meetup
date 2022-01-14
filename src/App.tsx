@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.scss';
 import UpcomingEvents from './Views/UpcomingEvents';
 import PreviousEvents from './Views/PreviousEvents';
@@ -34,6 +34,7 @@ function App() {
           <button
             onClick={() => setView(VIEW_PREVIOUS)}
             data-test='previous-btn'
+            id='previous'
           >
             {' '}
             Previous events{' '}
@@ -41,12 +42,14 @@ function App() {
           <button
             onClick={() => setView(VIEW_UPCOMING)}
             data-test='previous-btn'
+            id='upcoming'
           >
             {' '}
             Upcoming Events{' '}
           </button>
           <button
             data-test='create-button'
+            id='create'
             onClick={() => setView(VIEW_CREATE)}
           >
             {' '}

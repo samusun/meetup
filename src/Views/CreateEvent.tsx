@@ -45,9 +45,6 @@ export default function CreateEvent(): ReactElement {
     if (!name || name.length < 3) {
       setSubmitResponse('Your event name need to be longer than 3 characters');
       return false;
-      // } else if (!time || time.length < 4) {
-      //   setSubmitResponse('Please enter a time for your event');
-      //   return false;
     } else if (!place || place.length < 2) {
       setSubmitResponse('Please enter a valid place');
       return false;
@@ -59,9 +56,6 @@ export default function CreateEvent(): ReactElement {
         'Your description of the event need to be a bit longer'
       );
       return false;
-      // } else if (!date || date.length !== 10) {
-      //   setSubmitResponse('You need to enter a valid date');
-      //   return false;
     } else if (searchWords || searchWords.length < 2) {
       setSubmitResponse('Please enter some valid search words for your event');
     }

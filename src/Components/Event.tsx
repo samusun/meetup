@@ -13,7 +13,8 @@ export default function Event({
   participants,
   participantsMax,
   previous,
-  comments
+  comments,
+  searchWords
 }: Props): ReactElement {
   const [showComments, setShowComments] = useState(false);
   const [attend, setAttend] = useState(participants);
@@ -41,6 +42,7 @@ export default function Event({
           Attendees: {attend}/{participantsMax}{' '}
         </h3>
         <h3 data-testid='location'>Place: {place} </h3>
+        <h5>Search word: {searchWords} </h5>
         <p data-testid='description'>{description}</p>
         {attend === participants + 1 && (
           <p data-testid='attendResponse'>

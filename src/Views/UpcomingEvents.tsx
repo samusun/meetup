@@ -11,6 +11,7 @@ export default function UpcomingEvents(): ReactElement {
 
   function filterEvents(e: any) {
     e.preventDefault();
+    // Jag filtrerar en kopia för att inte sabotera originalarrayen.
     let filtered = onlyNewEventsCopy.filter(
       (event: { searchWords: any }) => event.searchWords === search
     );
@@ -44,9 +45,10 @@ export default function UpcomingEvents(): ReactElement {
   }, []);
 
   return (
-    <div className='container'>
+    <div id='upcomingContainer' className='container'>
       <form action=''>
         <input
+          id='searchBar'
           type='text'
           placeholder='Search'
           data-testid='searchBar'
@@ -55,6 +57,7 @@ export default function UpcomingEvents(): ReactElement {
         <button
           data-testid='submitSearch'
           onClick={(event) => filterEvents(event)}
+          id='submit'
         >
           Search
         </button>
@@ -73,6 +76,7 @@ export default function UpcomingEvents(): ReactElement {
             previous={false}
             rating={data.rating}
             comments={data.comments}
+            searchWords={data.searchWords}
           />
         ))}
     </div>

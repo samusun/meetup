@@ -1,7 +1,6 @@
 import React, { ReactElement, useState, useEffect } from 'react';
 import './Rate.css';
 import { eventData } from '../data/eventData';
-import { stringify } from 'querystring';
 
 interface Props {
   eventName: string;
@@ -10,9 +9,7 @@ interface Props {
 export default function Rate({ eventName }: Props): ReactElement {
   const localEvents: any = localStorage.getItem('Events');
   const [ratingResponse, setRatingResponse] = useState('');
-  const [avgRating, setAvgRating] = useState(3);
   const [merged, setMerged] = useState<any>([]);
-  const [newRating, setNewRating] = useState(3);
   const [average, setAverage] = useState<number>();
 
   function getAllEvents() {

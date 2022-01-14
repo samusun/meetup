@@ -1,5 +1,5 @@
 import { shallow, mount } from 'enzyme';
-import { render, screen, fireEvent, queryByText } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import Comments from './../Components/Comments';
 
 describe('Comments component', () => {

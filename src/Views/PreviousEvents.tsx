@@ -32,7 +32,6 @@ export default function PreviousEvents(): ReactElement {
     removeOldEvents(eventData, parsed, correctDate);
   }, []);
 
-  // NEED TO WRITE FILTER FUNCTION TO SORT DATE
   return (
     <div className='container'>
       {onlyPreviousEvents &&
@@ -49,6 +48,7 @@ export default function PreviousEvents(): ReactElement {
             rating={data.rating}
             comments={data.comments}
             previous={true}
+            searchWords={data.searchWords}
           />
         ))}
     </div>

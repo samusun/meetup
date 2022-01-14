@@ -9,4 +9,5 @@ export interface Props {
   rating: number[];
   previous: boolean;
   comments: { user: string; comment: string }[];
+  searchWords: string;
 }

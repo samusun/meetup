@@ -100,4 +100,28 @@ describe('Upcoming Events component', () => {
       /future/i
     );
   });
+
+  it('render undefined input field at start', () => {
+    const wrapper = mount(<UpcomingEvents />);
+    const input = wrapper.find('#searchBar');
+    const value = input.render().val();
+    expect(value).toBe(undefined);
+  });
+
+  it('search event and renders correct event, based on search string', () => {
+    const wrapper = mount(<UpcomingEvents />);
+    const input = wrapper.find('#searchBar');
+    const submit = wrapper.find('#submit');
+    const searchString = 'future';
+
+    input.simulate('change', { target: { value: searchString } });
+    submit.simulate('click');
+
+    const cards = wrapper.find('div.container .Event');
+    const searchStrings = cards.find('h5');
+    searchStrings.forEach((searchStrings) => {
+      const actualSearchString = searchStrings.text();
+      expect(actualSearchString).toMatch(searchString);
+    });
+  });
 });
